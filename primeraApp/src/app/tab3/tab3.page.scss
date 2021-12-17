@@ -1,0 +1,27 @@
+.hidden{
+    position: absolute;
+    overflow: hidden;
+    top: -9999px;
+}
+
+form div input{
+    width: 3.2em;
+    border: none;
+}
+
+form div input, form div img, form div p{
+    padding-top: 1vh;
+}
+
+img{
+    width: 50px;
+}
+
+.check{
+    width: 20px;
+}
+
+.text-error{
+    font-size: 0.55em;
+    color: red;
+}

@@ -1,0 +1,9 @@
+<ion-card>
+  <ion-button *ngIf="!reproduciendo">
+    <ion-icon name="play" (click) = "play()"></ion-icon>
+  </ion-button>
+
+  <ion-button *ngIf="reproduciendo">
+    <ion-icon name="pause" (click) = "pause()"></ion-icon>
+  </ion-button>
+</ion-card>

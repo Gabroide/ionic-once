@@ -1,0 +1,90 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Ordena
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="ion-padding">
+    <p ng-init="numAleatorio(); compruebaNumero()">Ordena de mayor a menor los siguientes números</p>
+    <p ng-init="numAleatorio()">{{num1}}, {{num2}}, {{num3}}, {{num4}}, {{num5}}, {{num6}}.</p>
+    <form>
+      <div>
+        <label for="num1" class="hidden">Inserta el primer número</label>
+        <input type="number" min="1" max="200" [(ngModel)] = "numIn1" name="num1" id="num1">
+        <img src="../../assets/img/cocodrilo.png" title="Mayor que" alt="Mayor que">
+        <p class="text-error" *ngIf="arrayZeros[0] == 1">{{ errorMsg }}</p>
+        <img src="../../assets/img/correcto.png" title="correcto" alt="correcto" class="check" *ngIf = "checkNumber > 1">
+        <img src="../../assets/img/error.png" title="error" alt="error" class="check" *ngIf = "checkNumber == 1">
+      </div>
+      <div>
+        <label for="num2" class="hidden" *ngIf="check == false">Inserta el segundo número</label>
+        <input type="number" min="1" max="200" [(ngModel)] = "numIn2" name="num2" id="num2">
+        <img src="../../assets/img/cocodrilo.png" title="Mayor que" alt="Mayor que">
+        <p class="text-error" *ngIf="arrayZeros[1] == 1">{{ errorMsg }}</p>
+        <img src="../../assets/img/correcto.png" title="correcto" alt="correcto" class="check" *ngIf = "checkNumber > 2">
+        <img src="../../assets/img/error.png" title="error" alt="error" class="check" *ngIf = "checkNumber == 2">
+      </div>
+      <div>
+        <label for="num3" class="hidden" *ngIf="check == false">Inserta el tercer número</label>
+        <input type="number" min="1" max="200" [(ngModel)] = "numIn3" name="num3" id="num3">
+        <img src="../../assets/img/cocodrilo.png" title="Mayor que" alt="Mayor que">
+        <p class="text-error" *ngIf="arrayZeros[2] == 1">{{ errorMsg }}</p>
+        <img src="../../assets/img/correcto.png" title="correcto" alt="correcto" class="check" *ngIf = "chekcNumber > 3">
+        <img src="../../assets/img/error.png" title="error" alt="error" class="check" *ngIf = "chekcNumber == 3">
+      </div>
+      <div>
+        <label for="num4" class="hidden" *ngIf="check == false">Inserta el cuarto número</label>
+        <input type="number" min="1" max="200" [(ngModel)] = "numIn4" name="num4" id="num4">
+        <img src="../../assets/img/cocodrilo.png" title="Mayor que" alt="Mayor que">
+        <p class="text-error" *ngIf="arrayZeros[3] == 1">{{ errorMsg }}</p>
+        <img src="../../assets/img/correcto.png" title="correcto" alt="correcto" class="check" *ngIf = "checkNumber > 4">
+        <img src="../../assets/img/error.png" title="error" alt="error" class="check" *ngIf = "checkNumber == 4">
+      </div>
+      <div>
+        <label for="num5" class="hidden" *ngIf="check == false">Inserta el quinto número</label>
+        <input type="number" min="1" max="200" [(ngModel)] = "numIn5" name="num5" id="num5">
+        <img src="../../assets/img/cocodrilo.png" title="Mayor que" alt="Mayor que">
+        <p class="text-error" *ngIf="arrayZeros[4] == 1">{{ errorMsg }}</p>
+        <img src="../../assets/img/correcto.png" title="correcto" alt="correcto" class="check" *ngIf="checkNumber>5">
+        <img src="../../assets/img/error.png" title="error" alt="error" class="check" *ngIf="checkNumber==5">
+      </div>
+      <div>
+        <label for="num6" class="hidden" *ngIf="check == false">Inserta el sexto número</label>
+        <input type="number" min="1" max="200" [(ngModel)] = "numIn6" name="num6" id="num6">
+        <img src="../../assets/img/cocodrilo-2.png" title="Mayor que" alt="Mayor que">
+        <p class="text-error" *ngIf="arrayZeros[5] == 1">{{ errorMsg }}</p>
+        <img src="../../assets/img/correcto.png" title="correcto" alt="correcto" class="check" *ngIf="checkNumber>6">
+        <img src="../../assets/img/error.png" title="error" alt="error" class="check" *ngIf="checkNumber==6">
+      </div>
+    </form>
+
+    <p>{{result}}</p>
+    <p *ngIf="count > 0 && (4 > count && check == false)">Número de intentos:{{count}}</p>
+    
+    <ion-card *ngIf="count == 4 || check == true">
+      <div *ngIf = "check == true">
+        <ion-card-header *ngIf = "check == true">
+          ¡¡¡ Enhorabuena !!!
+        </ion-card-header>
+        <p>Sólo te han hecho falta {{count}} intentos</p>
+        <p>¡¡Eres un {{level}}</p>
+      </div>
+      <div *ngIf = "check == false">
+        <ion-card-header>
+          ¡¡¡ Ooooooooooh !!!
+        </ion-card-header>
+        <ion-card-content>
+          <p>El resultado de la suma era {{sum}}</p>
+          <p>Mejor suerte la próxima vez.</p>
+          <p>¡¡Eres un {{level}}</p>
+        </ion-card-content>
+      </div>
+    </ion-card>
+
+    <ion-button expand="block" (click) = "checkInput()">Comprueba</ion-button>
+    <ion-button expand="block" (click) = "reinicia()" *ngIf="check == true">Volver a jugar</ion-button>
+  </div>
+</ion-content>

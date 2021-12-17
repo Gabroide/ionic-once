@@ -1,0 +1,42 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Operación matemática
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="ion-padding">
+    <p ng-init="numAleatorio()">Calcula la suma de los siguientes números</p>
+    <p ng-init="numAleatorio()">Primer número: {{num1}}</p><p>Segundo número: {{num2}}</p>
+    <ion-label for="comprueba" id="opLabel" *ngIf="4 > count && check == false">Inserta el valor de la suma</ion-label>
+    <ion-input type="number" min="1" max="200" [(ngModel)] = "num" name="comprueba" id="comprueba" placeholder="Inserta el valor de la suma" *ngIf="4 > count && check == false"></ion-input>
+    
+    <p *ngIf="!check">{{result}}</p>
+    <p *ngIf="count > 0 && (4 > count && check == false)">Número de intentos:{{count}}</p>
+    
+    <ion-card *ngIf="count == 4 || check == true">
+      <div *ngIf = "check == true">
+        <ion-card-header *ngIf = "check == true">
+          ¡¡¡ Enhorabuena !!!
+        </ion-card-header>
+        <p>Sólo te han hecho falta {{count}} intentos</p>
+        <p>{{level}}</p>
+      </div>
+      <div *ngIf = "check == false">
+        <ion-card-header>
+          ¡¡¡ Ooooooooooh !!!
+        </ion-card-header>
+        <ion-card-content>
+          <p>El resultado de la suma era {{sum}}</p>
+          <p>Mejor suerte la próxima vez.</p>
+          <p>{{level}}</p>
+        </ion-card-content>
+      </div>
+    </ion-card>
+
+    <ion-button expand="block" (click) = "checkAnswer()" *ngIf="4 > count && check == false">Comprueba</ion-button>
+    <ion-button expand="block" (click) = "reinicia()" *ngIf="count == 4 || check == true">Volver a jugar</ion-button>
+  </div>
+</ion-content>
